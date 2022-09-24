@@ -13,3 +13,6 @@ Solution Africaine pour Marchés Multi-vendeurs
 4-	Distribuer automatiquement les gains des vendeurs et les commissions des affiliés ;
 5-	Visualiser en temps réel les rapports des activités des vendeurs, affiliés et administrateurs ;
 
+# IMPORTANT
+Après instatallation et activation, rendez-vous dans le menu SAMM pour vérifier vos réglages.
+
