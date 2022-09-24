@@ -1,0 +1,131 @@
+
+
+
+    <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/172203/font-awesome.min.css'> 
+    
+    </head>
+
+<style type="text/css">
+  
+.sidebar {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 200px !important;
+  background-color: #f1f1f1 !important;
+  position: absolute !important;
+  height: 100% !important;
+  overflow: auto !important;
+}
+
+.sidebar a {
+  display: block !important;
+  color: black !important;
+  padding: 16px !important;
+  text-decoration: none !important;
+}
+ 
+.sidebar a.active {
+  background-color: #273772 !important;
+  color: white !important;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555 !important;
+  color: white !important;
+}
+
+div.content {
+  margin-left: 200px !important;
+  padding: 1px 16px !important;
+  
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+  .sidebar a {float: left !important;}
+  div.content {margin-left: 0 !important;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center !important;
+    float: none !important;
+  }
+}
+</style>
+<style type="text/css">
+  .box-column {
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+  display: flex;
+  margin-top: 30px;
+}
+.rtwalwm, .rtwalwm * {
+  box-sizing: border-box;
+}
+.box-content {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 2px 3px 20px rgba(0,0,0,0.22);
+  color: #666666;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow: hidden;
+  width: 100%;
+}
+.be57373 {
+  background-color: #e57373;
+}
+.b90A4AE{
+  background-color: #90A4AE;
+}
+.b81C784{
+  background-color: #81C784;
+}
+.b4FC3F7{
+  background-color: #4FC3F7;
+}
+
+.box-column-heading {
+  width: 100%;
+  color: #ffffff;
+  padding: 10px;
+  margin: 0;
+}
+.box-content-desc {
+  text-align: left;
+  padding: 20px 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.box-content .box-content-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #e57373;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  overflow: hidden;
+  padding: 4px;
+}
+.box-content-right {
+  width: calc(100% - 50px);
+  margin-left: 10px;
+}
+.box-content-value {
+  font-size: 22px;
+  font-weight: bold;
+  display: block;
+}
+</style>
