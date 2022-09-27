@@ -11,11 +11,11 @@ if (isset($_POST['modif_infos'])) {
 
 	$sql = new affiliation();
 	$req = $sql->update_infos_user($nom,$email,$telephone,$adresse,$id_client);
-?>
+	?>
 	<script type="text/javascript">
 		alert('Modifiée avec succès!');
 	</script>
-<?php
+	<?php
 }
 
 if (isset($_POST['modif_pass'])) {
@@ -40,11 +40,11 @@ if (isset($_POST['modif_pass'])) {
 	# code...
 }
 ?>
-	<?php
-	$sql1 = new affiliation();
-	$req1 = $sql1->info_account($_SESSION['af_user_id']);
-	$info = $req1->fetch();
-	?>
+<?php
+$sql1 = new affiliation();
+$req1 = $sql1->info_account($_SESSION['af_user_id']);
+$info = $req1->fetch();
+?>
 <!--<h3>Informations:</h3> -->
 <style>
 	table{
@@ -60,17 +60,17 @@ if (isset($_POST['modif_pass'])) {
 
 <table class="">
 	<tr>
-                                    <th>Nom et prénom</th>
-                                    <th>Email</th>
-                                    <th>Téléphone</th>
-                                  </tr>
+		<th>Nom et prénom</th>
+		<th>Email</th>
+		<th>Téléphone</th>
+	</tr>
 
 	
 	<tr>
-                                    <td><?php echo $info['nom']; ?></td>
-                                    <td><?php echo $info['email']; ?></td>
-                                    <td><?php echo $info['telephone']; ?></td>
-    </tr>
+		<td><?php echo $info['nom']; ?></td>
+		<td><?php echo $info['email']; ?></td>
+		<td><?php echo $info['telephone']; ?></td>
+	</tr>
 
 
 </table>

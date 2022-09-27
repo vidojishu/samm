@@ -8,25 +8,25 @@ if (isset($_POST['com_aff'])) {
 	$com_vend = htmlspecialchars($_POST['com_vend']);
 
         # code...
-        $sql = new affiliation();
-        $req = $sql->update_admin_reglage($com_aff,$com_vend);
-        $enregistre = $req->fetch();
+    $sql = new affiliation();
+    $req = $sql->update_admin_reglage($com_aff,$com_vend);
+    $enregistre = $req->fetch();
 
 
-        ?>
+    ?>
 
-            <script type="text/javascript">
-                alert('Enregistré!');
-            </script>
-        <?php
+    <script type="text/javascript">
+        alert('Enregistré!');
+    </script>
+    <?php
     
 }
 else { }
 
         # code...
-        $sql = new affiliation();
-        $req = $sql->get_samm_admin_details();
-        $admin_details = $req->fetch();
+    $sql = new affiliation();
+$req = $sql->get_samm_admin_details();
+$admin_details = $req->fetch();
 
 
 
@@ -55,13 +55,13 @@ else { }
                     </div>
                 </div>
             </form>
-		</div>
-	</div>
+        </div>
+    </div>
 
 </div>
 
 
 
-    
+
 
 

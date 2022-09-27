@@ -1,7 +1,7 @@
 <?php ?>
 
 
- <table class="wp-list-table widefat fixed striped table-view-list">
+<table class="wp-list-table widefat fixed striped table-view-list">
   <tr>
     <th>Date</th>
     <th>Nom</th>
@@ -12,8 +12,8 @@
     <th>Opération</th>
 
     
-  </tr>
-  <?php 
+</tr>
+<?php 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
 {
     $url = "https";
@@ -44,70 +44,70 @@ while($retrait = $req->fetch()){
     $sql1 = new admin_affiliation();
     $req1=$sql1->afficher_infos_demande_retrait($retrait['id_user']);
     $infos_retrait = $req1->fetch()
-?>
+    ?>
 
-  <tr>
-    <td><?php echo $retrait['date_demande'];?></td>
-    <td><?php echo $infos_retrait['nom'];?></td>
-    <td><?php echo $infos_retrait['email'];?> </br> <?php echo $retrait['telephone'];?></td>
-    <td><?php echo $retrait['montant_retrait'];?></td>
-    <td>
-        <?php 
-        if ($infos_retrait['type'] == 1) {
-        ?>
-        Affilié
-        <?php   
-        }
-        elseif ($infos_retrait['type'] == 2) {
-        ?>
-        Vendeur
-        <?php
-        }
-        else {
-        ?>
-        <?php
-        }?>
-    </td>
-    <td>
-        <?php 
-        if ($retrait['status'] == 0) {
-        ?>
-        En attente
-        <?php
-        }
-        else {
-        ?>
-        Payé
-        <?php
-        }?>
-    </td>
-    <td><?php if($retrait['status'] == 0 ) { ?><button> <a href="../wp-content/plugins/gestion_affiliation/traitement/01.php?retrait_affiliation=<?php echo$retrait['id']; ?>"  style="color: black;" >Valider comme Payé</a></button> </br> <button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');"  style="color: black;"  >Payer par Momo</a></button> <?php } else { } ?> </td>
-  </tr>
-<?php
+    <tr>
+        <td><?php echo $retrait['date_demande'];?></td>
+        <td><?php echo $infos_retrait['nom'];?></td>
+        <td><?php echo $infos_retrait['email'];?> </br> <?php echo $retrait['telephone'];?></td>
+        <td><?php echo $retrait['montant_retrait'];?></td>
+        <td>
+            <?php 
+            if ($infos_retrait['type'] == 1) {
+                ?>
+                Affilié
+                <?php   
+            }
+            elseif ($infos_retrait['type'] == 2) {
+                ?>
+                Vendeur
+                <?php
+            }
+            else {
+                ?>
+                <?php
+            }?>
+        </td>
+        <td>
+            <?php 
+            if ($retrait['status'] == 0) {
+                ?>
+                En attente
+                <?php
+            }
+            else {
+                ?>
+                Payé
+                <?php
+            }?>
+        </td>
+        <td><?php if($retrait['status'] == 0 ) { ?><button> <a href="../wp-content/plugins/gestion_affiliation/traitement/01.php?retrait_affiliation=<?php echo$retrait['id']; ?>"  style="color: black;" >Valider comme Payé</a></button> </br> <button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');"  style="color: black;"  >Payer par Momo</a></button> <?php } else { } ?> </td>
+    </tr>
+    <?php
 }
 ?>  
 </table>
 
 <div class="custom-pagination">
-                                    <ul class="pagination">
-            
-                                        <?php 
-                                        $sql = new pagination_affiliation();
-                                        $pager=$sql->compter_demande_retrait_affiliation();
-                                        $count_result_pagination = $pager->rowCount();
+    <ul class="pagination">
+        
+        <?php 
+        $sql = new pagination_affiliation();
+        $pager=$sql->compter_demande_retrait_affiliation();
+        $count_result_pagination = $pager->rowCount();
 
 
-                                        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
+        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
 
-                                        $nbr_pg_total = explode(".", $nbr_pg_total);
+        $nbr_pg_total = explode(".", $nbr_pg_total);
 
-                                        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
-                                        
+        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
+        
 
 
-                                        if ($pg>5) {
-                                            $num_pg_gauche=$pg-5;
-                                            $num_pg_precedent=$num_pg_gauche-1;
+        if ($pg>5) {
+            $num_pg_gauche=$pg-5;
+            $num_pg_precedent=$num_pg_gauche-1;
 
                                             if($pg>6) { ?> <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_precedent; ?>&q=<?php echo$q;?>">Previous</a></li> <?php } else { } //affiche bouton précédent quand on est sur un page supérieur à 5
 
@@ -138,10 +138,10 @@ while($retrait = $req->fetch()){
                                         $num_avant_derniere_pg=$num_pg_droite-1;
 
                                         if($nbr_pg_total>$num_avant_derniere_pg) { //Metre le bouton suivant au besoin
-                                        ?>
-                                        <li class="page-item"><a >...</a></li>
-                                        <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
-                                        <?php		                	
+                                            ?>
+                                            <li class="page-item"><a >...</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
+                                            <?php		                	
                                         } else { }
 
                                         ?>
@@ -149,7 +149,7 @@ while($retrait = $req->fetch()){
                                     </ul>
                                 </div>
 
-<?php																		                                             
+                                <?php																		                                             
 
-?>  
+                                ?>  
 

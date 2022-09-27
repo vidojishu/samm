@@ -114,18 +114,18 @@ if (isset($_POST['add_produit'])) {
     //echo($id_produit);
 
 
-        $sql = new affiliation();
-        $req = $sql->add_produits($id_user,$id_produit,$temps);
-        $enregistre = $req->fetch();
+    $sql = new affiliation();
+    $req = $sql->add_produits($id_user,$id_produit,$temps);
+    $enregistre = $req->fetch();
 
 
 
 
-        ?>
-           <script type="text/javascript">
-                alert('Produit publié avec succès!');
-            </script>
-        <?php
+    ?>
+    <script type="text/javascript">
+        alert('Produit publié avec succès!');
+    </script>
+    <?php
 }
 ?>
 
@@ -170,8 +170,8 @@ $status=$info['status'];
                     </div>
                 </div>
             </form>
-		</div>
-	</div>
+        </div>
+    </div>
 
 </div>
 
@@ -191,74 +191,74 @@ $url .= $_SERVER['REQUEST_URI'];
 
 
 <h1>Mes produits</h1>
-                                  <p> </p>
+<p> </p>
 
-                                 <table class="">
-                                  <tr>
-                                    <th>Image</th>
-                                    <th>Nom</th>
-                                    <th>Montant</th>
-                                    <th>Statut</th>
-                                    <th>Gérer</th>
-                                    
-                                    
-                                  </tr>
+<table class="">
+  <tr>
+    <th>Image</th>
+    <th>Nom</th>
+    <th>Montant</th>
+    <th>Statut</th>
+    <th>Gérer</th>
+    
+    
+</tr>
 
-                                <?php  
-                                if(isset($_GET['q'])) {$q=addslashes($_GET['q']); } else { $q=""; }
+<?php  
+if(isset($_GET['q'])) {$q=addslashes($_GET['q']); } else { $q=""; }
 
                                 //pagination
-                                if(isset($_GET['pg'] ) ) {$pg=$_GET['pg'];} else {$pg=1;}
-                                $nbr_result_par_pg=1;
-                                $lim_sup=$pg*$nbr_result_par_pg;
-                                $lim_inf=$lim_sup-$nbr_result_par_pg;
+if(isset($_GET['pg'] ) ) {$pg=$_GET['pg'];} else {$pg=1;}
+$nbr_result_par_pg=1;
+$lim_sup=$pg*$nbr_result_par_pg;
+$lim_inf=$lim_sup-$nbr_result_par_pg;
                                 //pagination--
 
-                                $sql = new affiliation();
-                                $req=$sql->find_my_all_prod($_SESSION['af_user_id']);
+$sql = new affiliation();
+$req=$sql->find_my_all_prod($_SESSION['af_user_id']);
 
-                                while($all_prod = $req->fetch()){
-                                    $product_info = wc_get_product( $all_prod['id_produit'] );
-                                  $sql1 = new affiliation(); 
-                                  $req1=$sql1->info_produit($all_prod['id_produit']); 
-                                  $info = $req1->fetch();
-
-
-                                ?>
-
-                                  <tr>
-                                    <td> <img src="<?php echo wp_get_attachment_url( $product_info->get_image_id() ); ?>" width="80px" /></td>
-                                    <td><a href="../product/<?php echo $info['post_name'];?>" target="_blank" ><?php echo $info['post_title'];?> </a></td>
-                                    <td><?php echo $product_info->get_regular_price(); ?> CFA</td>
-                                    <td><?php $vstatut = $product_info->get_status(); if($vstatut =='publish') { echo'Publié'; } else { echo'En attente'; }  ?></td>
-                                    <td><a href=""> <button>Modifier</button> </a> </br><a href=""> <button>Suprimer</button> </a> </td>
-                                      
-                                  </tr>
-                                <?php
-                                }
-                                ?>  
-                                </table> 
-
-                                <div class="custom-pagination">
-                                    <ul class="pagination">
-            
-                                        <?php 
-                                        $sql = new pagination_affiliation();
-                                        $pager=$sql->compter_historique_retrait($_SESSION['af_user_id']);
-                                        $count_result_pagination = $pager->rowCount();
+while($all_prod = $req->fetch()){
+    $product_info = wc_get_product( $all_prod['id_produit'] );
+    $sql1 = new affiliation(); 
+    $req1=$sql1->info_produit($all_prod['id_produit']); 
+    $info = $req1->fetch();
 
 
-                                        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
+    ?>
 
-                                        $nbr_pg_total = explode(".", $nbr_pg_total);
+    <tr>
+        <td> <img src="<?php echo wp_get_attachment_url( $product_info->get_image_id() ); ?>" width="80px" /></td>
+        <td><a href="../product/<?php echo $info['post_name'];?>" target="_blank" ><?php echo $info['post_title'];?> </a></td>
+        <td><?php echo $product_info->get_regular_price(); ?> CFA</td>
+        <td><?php $vstatut = $product_info->get_status(); if($vstatut =='publish') { echo'Publié'; } else { echo'En attente'; }  ?></td>
+        <td><a href=""> <button>Modifier</button> </a> </br><a href=""> <button>Suprimer</button> </a> </td>
+        
+    </tr>
+    <?php
+}
+?>  
+</table> 
 
-                                        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
-                                        
+<div class="custom-pagination">
+    <ul class="pagination">
+        
+        <?php 
+        $sql = new pagination_affiliation();
+        $pager=$sql->compter_historique_retrait($_SESSION['af_user_id']);
+        $count_result_pagination = $pager->rowCount();
 
 
-                                        if ($pg>5) {
-                                            $num_pg_gauche=$pg-5;
-                                            $num_pg_precedent=$num_pg_gauche-1;
+        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
+
+        $nbr_pg_total = explode(".", $nbr_pg_total);
+
+        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
+        
+
+
+        if ($pg>5) {
+            $num_pg_gauche=$pg-5;
+            $num_pg_precedent=$num_pg_gauche-1;
 
                                             if($pg>6) { ?> <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_precedent; ?>&q=<?php echo$q;?>">Previous</a></li> <?php } else { } //affiche bouton précédent quand on est sur un page supérieur à 5
 
@@ -289,10 +289,10 @@ $url .= $_SERVER['REQUEST_URI'];
                                         $num_avant_derniere_pg=$num_pg_droite-1;
 
                                         if($nbr_pg_total>$num_avant_derniere_pg) { //Metre le bouton suivant au besoin
-                                        ?>
-                                        <li class="page-item"><a >...</a></li>
-                                        <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
-                                        <?php		                	
+                                            ?>
+                                            <li class="page-item"><a >...</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
+                                            <?php		                	
                                         } else { }
 
                                         ?>
@@ -300,6 +300,6 @@ $url .= $_SERVER['REQUEST_URI'];
                                     </ul>
                                 </div>
 
-    
+                                
 
 

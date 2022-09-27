@@ -1,19 +1,19 @@
 <?php
-  date_default_timezone_set('Africa/Porto-Novo');
-  require('wp-content/plugins/samm/model/model.php');
+date_default_timezone_set('Africa/Porto-Novo');
+require('wp-content/plugins/samm/model/model.php');
 
 
 
- if(isset($_GET['ret'])) { ?> <script type="text/javascript">window.location.href = "<?php echo 'dashboard-affiliate/'; ?>";</script> <?php }  else { }
+if(isset($_GET['ret'])) { ?> <script type="text/javascript">window.location.href = "<?php echo 'dashboard-affiliate/'; ?>";</script> <?php }  else { }
 
 
 //Se deconnecter
-  if(isset($_GET['dec'])) { session_destroy(); ?> <script type="text/javascript">window.location.href = "<?php echo 'dashboard-affiliate/'; ?>";</script> <?php }  else { }
+if(isset($_GET['dec'])) { session_destroy(); ?> <script type="text/javascript">window.location.href = "<?php echo 'dashboard-affiliate/'; ?>";</script> <?php }  else { }
 
 
 //Apres remplissage du premier formulaire
 
-  if(isset($_POST['nom_commercial'] ) ){ 
+if(isset($_POST['nom_commercial'] ) ){ 
 
   $nom_commercial = htmlspecialchars ($_POST['nom_commercial']);
   $email = htmlspecialchars ($_POST['email']);
@@ -26,14 +26,14 @@
   $req=$sql->add_shop_details($nom_commercial,$email,$telephone,$adresse,$description,$id_user);
   $rps = $req;
   
-        ?>
-            <script type="text/javascript">
-                alert('Demande effectuée avec succès! Nous allons valider votre compte après vérification! Merci!');
-                window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>?dec=01";
-            </script>
-        <?php
+  ?>
+  <script type="text/javascript">
+    alert('Demande effectuée avec succès! Nous allons valider votre compte après vérification! Merci!');
+    window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>?dec=01";
+  </script>
+  <?php
 
-   } else { }
+} else { }
 
 
 
@@ -44,12 +44,12 @@
 
 if($_SESSION['af_user_statut_boutique']==1) {
 
-        ?>
-            <script type="text/javascript">
-                alert('Vous avez une demande en cours! Merci de patienter!');
-                
-            </script>
-        <?php
+  ?>
+  <script type="text/javascript">
+    alert('Vous avez une demande en cours! Merci de patienter!');
+    
+  </script>
+  <?php
 
 }
 
@@ -70,102 +70,102 @@ include'wp-content/plugins/samm/css/dashboard_style.html';
 
 <div class="content"  >
 
-<style type="text/css">
+  <style type="text/css">
    /* Style the form */
-#regForm {
-  background-color: #ffffff;
-  margin: 100px auto;
-  padding: 40px;
-  width: 70%;
-  min-width: 300px;
-}
+   #regForm {
+    background-color: #ffffff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
 
-/* Style the input fields */
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
+  /* Style the input fields */
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
 
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-  background-color: #ffdddd;
-}
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
 
-/* Hide all steps by default: */
-.tab {
-  display: none;
-}
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
 
-/* Make circles that indicate the steps of the form: */
-.step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
 
-/* Mark the active step: */
-.step.active {
-  opacity: 1;
-}
+  /* Mark the active step: */
+  .step.active {
+    opacity: 1;
+  }
 
-/* Mark the steps that are finished and valid: */
-.step.finish {
-  background-color: #04AA6D;
-} 
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #04AA6D;
+  } 
 </style>
 
 
- <form id="regForm" method="post" action="">
+<form id="regForm" method="post" action="">
 
 
 
-<!-- One "tab" for each step in the form: -->
-<div class="tab">
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
 
-<img src="../wp-content/plugins/samm/images/man-with-laptop-light.png">
-<h4>Bienvenue dans votre compte vendeur.</h4>
-<p>Avant de commencer, veuillez renseigner les informations relatives à votre boutique. </p>
+    <img src="../wp-content/plugins/samm/images/man-with-laptop-light.png">
+    <h4>Bienvenue dans votre compte vendeur.</h4>
+    <p>Avant de commencer, veuillez renseigner les informations relatives à votre boutique. </p>
 
-</div>
-
-<div class="tab">
-  <h4>Informations Générales</h4>
-  <p><input placeholder="Nom commercial" name="nom_commercial" oninput="this.className = ''"></p>
-  <p><textarea style="border: solid black 1px; background: transparent; " name="description" placeholder="Que voulez-vous vendre?" oninput="this.className = ''"></textarea></p>
-  
-</div>
-
-<div class="tab">Contacts et adresse:
-    <p><input placeholder="Email" name="email" oninput="this.className = ''"></p>
-  <p><input placeholder="Téléphone" name="phone" oninput="this.className = ''"></p>
-
-  <p><input placeholder="Adresse" name="adresse" oninput="this.className = ''"></p>
-  
-</div>
-
-
-<div style="overflow:auto;">
-  <div style="float:right;">
-    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Précédant</button>
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">Suivant</button>
   </div>
-</div>
 
-<!-- Circles which indicates the steps of the form: -->
-<div style="text-align:center;margin-top:40px;">
-  <span class="step"></span>
-  <span class="step"></span>
-  <span class="step"></span>
-  
-</div>
+  <div class="tab">
+    <h4>Informations Générales</h4>
+    <p><input placeholder="Nom commercial" name="nom_commercial" oninput="this.className = ''"></p>
+    <p><textarea style="border: solid black 1px; background: transparent; " name="description" placeholder="Que voulez-vous vendre?" oninput="this.className = ''"></textarea></p>
+    
+  </div>
+
+  <div class="tab">Contacts et adresse:
+    <p><input placeholder="Email" name="email" oninput="this.className = ''"></p>
+    <p><input placeholder="Téléphone" name="phone" oninput="this.className = ''"></p>
+
+    <p><input placeholder="Adresse" name="adresse" oninput="this.className = ''"></p>
+    
+  </div>
+
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Précédant</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Suivant</button>
+    </div>
+  </div>
+
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    
+  </div>
 
 </form> 
 <script type="text/javascript">
@@ -245,7 +245,7 @@ function fixStepIndicator(n) {
 
 </div>
 
-   
+
 
 
 

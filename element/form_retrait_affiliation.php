@@ -29,16 +29,16 @@ if (isset($_POST['demande_retrait'])) {
 
 
         ?>
-            <script type="text/javascript">
-                alert('Demande effectuée avec succès! Vous recevrez votre paiement dans un bref délais !');
-            </script>
+        <script type="text/javascript">
+            alert('Demande effectuée avec succès! Vous recevrez votre paiement dans un bref délais !');
+        </script>
         <?php
     }
     else {
         ?>
-            <script type="text/javascript">
-                alert('Demande échouée ! Vous n\'avez pas assez de gains disponibles !');
-            </script>
+        <script type="text/javascript">
+            alert('Demande échouée ! Vous n\'avez pas assez de gains disponibles !');
+        </script>
         <?php
     }
 }
@@ -55,12 +55,12 @@ $id_user=$info['id_user'];
 $status=$info['status'];
 
 if ($resultat < 1) {
-?>
+    ?>
 
-<div class="card-body">
-	<h3>Demande de retrait</h3>
-	<div class="row">
-		<div class="col-md-6">
+    <div class="card-body">
+       <h3>Demande de retrait</h3>
+       <div class="row">
+          <div class="col-md-6">
             <form action="" method="post">
                 <div class="form-group">
                     <div class="col-md-12">
@@ -80,20 +80,20 @@ if ($resultat < 1) {
                     </div>
                 </div>
             </form>
-		</div>
-	</div>
+        </div>
+    </div>
 
 </div>
-    <?php
-    }  
-    else {
-        ?>
-        <!-- <script>alert('Vous avez déjà une demande de retrait en attente!');</script>       --> 
-        <h2>Vous avez déjà une demande de retrait en attente!</h2>
-        <?php
-       
-    }   
+<?php
+}  
+else {
     ?>
+    <!-- <script>alert('Vous avez déjà une demande de retrait en attente!');</script>       --> 
+    <h2>Vous avez déjà une demande de retrait en attente!</h2>
+    <?php
+    
+}   
+?>
 
 <?php 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
@@ -111,64 +111,64 @@ $url .= $_SERVER['REQUEST_URI'];
 
 
 <h3>Historique</h3>
-                                  <p> </p>
+<p> </p>
 
-                                 <table class="">
-                                  <tr>
-                                    <th>Date</th>
-                                    <th>Montant</th>
-                                    <th>Statut</th>
-                                    
-                                    
-                                  </tr>
+<table class="">
+  <tr>
+    <th>Date</th>
+    <th>Montant</th>
+    <th>Statut</th>
+    
+    
+</tr>
 
-                                <?php  
-                                if(isset($_GET['q'])) {$q=addslashes($_GET['q']); } else { $q=""; }
+<?php  
+if(isset($_GET['q'])) {$q=addslashes($_GET['q']); } else { $q=""; }
 
                                 //pagination
-                                if(isset($_GET['pg'] ) ) {$pg=$_GET['pg'];} else {$pg=1;}
-                                $nbr_result_par_pg=12;
-                                $lim_sup=$pg*$nbr_result_par_pg;
-                                $lim_inf=$lim_sup-$nbr_result_par_pg;
+if(isset($_GET['pg'] ) ) {$pg=$_GET['pg'];} else {$pg=1;}
+$nbr_result_par_pg=12;
+$lim_sup=$pg*$nbr_result_par_pg;
+$lim_inf=$lim_sup-$nbr_result_par_pg;
                                 //pagination--
 
-                                $sql = new affiliation();
-                                $req=$sql->historique_retrait($_SESSION['af_user_id'],$lim_inf,$nbr_result_par_pg);
+$sql = new affiliation();
+$req=$sql->historique_retrait($_SESSION['af_user_id'],$lim_inf,$nbr_result_par_pg);
 
-                                while($retrait = $req->fetch()){
-                                ?>
+while($retrait = $req->fetch()){
+    ?>
 
-                                  <tr>
-                                    <td><?php echo $retrait['date_demande'].' à '.$retrait['heure_demande'];?></td>
-                                    <td><?php echo $retrait['montant_retrait'];?>F CFA</td>
-                                    <td>Validé</td>
-                                      
-                                  </tr>
-                                <?php
-                                }
-                                ?>  
-                                </table> 
+    <tr>
+        <td><?php echo $retrait['date_demande'].' à '.$retrait['heure_demande'];?></td>
+        <td><?php echo $retrait['montant_retrait'];?>F CFA</td>
+        <td>Validé</td>
+        
+    </tr>
+    <?php
+}
+?>  
+</table> 
 
-                                <div class="custom-pagination">
-                                    <ul class="pagination">
-            
-                                        <?php 
-                                        $sql = new pagination_affiliation();
-                                        $pager=$sql->compter_historique_retrait($_SESSION['af_user_id']);
-                                        $count_result_pagination = $pager->rowCount();
-
-
-                                        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
-
-                                        $nbr_pg_total = explode(".", $nbr_pg_total);
-
-                                        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
-                                        
+<div class="custom-pagination">
+    <ul class="pagination">
+        
+        <?php 
+        $sql = new pagination_affiliation();
+        $pager=$sql->compter_historique_retrait($_SESSION['af_user_id']);
+        $count_result_pagination = $pager->rowCount();
 
 
-                                        if ($pg>5) {
-                                            $num_pg_gauche=$pg-5;
-                                            $num_pg_precedent=$num_pg_gauche-1;
+        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
+
+        $nbr_pg_total = explode(".", $nbr_pg_total);
+
+        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
+        
+
+
+        if ($pg>5) {
+            $num_pg_gauche=$pg-5;
+            $num_pg_precedent=$num_pg_gauche-1;
 
                                             if($pg>6) { ?> <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_precedent; ?>&q=<?php echo$q;?>">Previous</a></li> <?php } else { } //affiche bouton précédent quand on est sur un page supérieur à 5
 
@@ -199,10 +199,10 @@ $url .= $_SERVER['REQUEST_URI'];
                                         $num_avant_derniere_pg=$num_pg_droite-1;
 
                                         if($nbr_pg_total>$num_avant_derniere_pg) { //Metre le bouton suivant au besoin
-                                        ?>
-                                        <li class="page-item"><a >...</a></li>
-                                        <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
-                                        <?php		                	
+                                            ?>
+                                            <li class="page-item"><a >...</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
+                                            <?php		                	
                                         } else { }
 
                                         ?>
@@ -210,6 +210,6 @@ $url .= $_SERVER['REQUEST_URI'];
                                     </ul>
                                 </div>
 
-    
+                                
 
 

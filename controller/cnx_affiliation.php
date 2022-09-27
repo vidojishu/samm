@@ -22,7 +22,7 @@ if (isset($_POST['email']) and isset($_POST['mp1'])) {
 	$sql1 = new affiliation();
 	$req1 = $sql1->connect_account($email, $mp1);
 	$account = $req1->fetch();
-    $rps = $req1->rowCount();
+	$rps = $req1->rowCount();
 
 	if ($rps == 1) {
 
@@ -37,25 +37,25 @@ if (isset($_POST['email']) and isset($_POST['mp1'])) {
 		else {
 			# code...
 			?>
-				<script type="text/javascript">
-					alert('Compte désactivé. Veuillez contacter l\'administrateur du site !');
-					window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
-				</script>
+			<script type="text/javascript">
+				alert('Compte désactivé. Veuillez contacter l\'administrateur du site !');
+				window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
+			</script>
 			<?php
 		}
-?>
+		?>
 		<script type="text/javascript">
 			window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
 		</script>
-	<?php
+		<?php
 	} else {
-	?>
+		?>
 		<script type="text/javascript">
 			alert('Email ou Mot de passe erronné pour ce type de compte. Veuillez vérifier les informations saisies !');
 			window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
 		</script>
-	<?php
+		<?php
 	}
 } else { ?> <script type="text/javascript">
-		window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
+	window.location.href = "<?php echo $_SERVER['HTTP_REFERER']; ?>";
 	</script> <?php }

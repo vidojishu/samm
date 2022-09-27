@@ -1,7 +1,7 @@
 <?php ?>
 
 
- <table class="wp-list-table widefat fixed striped table-view-list">
+<table class="wp-list-table widefat fixed striped table-view-list">
   <tr>
     <th>Date</th>
     <th>Nom</th>
@@ -12,8 +12,8 @@
     <th>Opération</th>
 
     
-  </tr>
-  <?php 
+</tr>
+<?php 
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
 {
     $url = "https";
@@ -41,57 +41,57 @@ $sql = new admin_affiliation();
 $req=$sql->afficher_user_affiliation1($lim_inf, $nbr_result_par_pg);
 
 while($marchant = $req->fetch()){
-?>
+    ?>
 
-  <tr>
-    <td><?php echo $marchant['date_inscription'];?></td>
-    <td><?php echo $marchant['nom'];?></td>
-    <td><?php echo $marchant['email'];?> </br> <?php echo $marchant['telephone'];?></td>
-    <td><?php echo $marchant['adresse'];?></td>   
-    <td>En attente: <?php echo $marchant['gain_tempo'];?> CFA</br>Disponible: <?php echo $marchant['gain_affiliation'];?> CFA</td> 
-    <td>
-        <?php 
-        if ($marchant['valide'] == 0) {
-        ?>
-        Désactivé
-        <?php
-        }
-        else {
-        ?>
-        Activé
-        <?php
-        }?>
-    </td>
-    <td>
-    <?php if($marchant['valide'] == 0 ) { ?><button> <a href="#" onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: black;"  >Activer</a></button> <?php } else { ?><button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: black;"  >Désactiver</a></button> <?php } ?>
-        <button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: red;"  >delete</a></button>
-    </td>
-  </tr>
-<?php
+    <tr>
+        <td><?php echo $marchant['date_inscription'];?></td>
+        <td><?php echo $marchant['nom'];?></td>
+        <td><?php echo $marchant['email'];?> </br> <?php echo $marchant['telephone'];?></td>
+        <td><?php echo $marchant['adresse'];?></td>   
+        <td>En attente: <?php echo $marchant['gain_tempo'];?> CFA</br>Disponible: <?php echo $marchant['gain_affiliation'];?> CFA</td> 
+        <td>
+            <?php 
+            if ($marchant['valide'] == 0) {
+                ?>
+                Désactivé
+                <?php
+            }
+            else {
+                ?>
+                Activé
+                <?php
+            }?>
+        </td>
+        <td>
+            <?php if($marchant['valide'] == 0 ) { ?><button> <a href="#" onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: black;"  >Activer</a></button> <?php } else { ?><button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: black;"  >Désactiver</a></button> <?php } ?>
+            <button> <a href="#"  onclick="alert('Indisponible! Veuillez passer à la version Pro.');" style="color: red;"  >delete</a></button>
+        </td>
+    </tr>
+    <?php
 }
 ?>  
 </table>
 
 <div class="custom-pagination">
-                                    <ul class="pagination">
-            
-                                        <?php 
-                                        $sql = new pagination_affiliation();
-                                        $pager=$sql->compter_user_affiliation1();
-                                        $count_result_pagination = $pager->rowCount();
+    <ul class="pagination">
+        
+        <?php 
+        $sql = new pagination_affiliation();
+        $pager=$sql->compter_user_affiliation1();
+        $count_result_pagination = $pager->rowCount();
 
 
-                                        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
+        $nbr_pg_total=$count_result_pagination/$nbr_result_par_pg;
 
-                                        $nbr_pg_total = explode(".", $nbr_pg_total);
+        $nbr_pg_total = explode(".", $nbr_pg_total);
 
-                                        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
-                                        
+        if( isset($nbr_pg_total[1]) && ($nbr_pg_total[1]>0)){$nbr_pg_total = $nbr_pg_total[0]+1; } else { $nbr_pg_total = $nbr_pg_total[0]; }
+        
 
 
-                                        if ($pg>5) {
-                                            $num_pg_gauche=$pg-5;
-                                            $num_pg_precedent=$num_pg_gauche-1;
+        if ($pg>5) {
+            $num_pg_gauche=$pg-5;
+            $num_pg_precedent=$num_pg_gauche-1;
 
                                             if($pg>6) { ?> <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_precedent; ?>&q=<?php echo$q;?>">Previous</a></li> <?php } else { } //affiche bouton précédent quand on est sur un page supérieur à 5
 
@@ -122,10 +122,10 @@ while($marchant = $req->fetch()){
                                         $num_avant_derniere_pg=$num_pg_droite-1;
 
                                         if($nbr_pg_total>$num_avant_derniere_pg) { //Metre le bouton suivant au besoin
-                                        ?>
-                                        <li class="page-item"><a >...</a></li>
-                                        <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
-                                        <?php		                	
+                                            ?>
+                                            <li class="page-item"><a >...</a></li>
+                                            <li class="page-item"><a class="page-link" href="<?php echo $url;?>&pg=<?php echo$num_pg_droite; ?>&q=<?php echo$q; ?>">Next</a></li>
+                                            <?php		                	
                                         } else { }
 
                                         ?>
@@ -133,7 +133,7 @@ while($marchant = $req->fetch()){
                                     </ul>
                                 </div>
 
-<?php																		                                             
+                                <?php																		                                             
 
-?>  
+                                ?>  
 
