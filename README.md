@@ -7,11 +7,11 @@ Solution Africaine pour Marchés Multi-vendeurs
 </p>
 
 <p>Avec SAMM vous pouvez:</p>
-1-	Enregistrer les paiements de produits par mobile money ;
-2-	Permettre aux vendeurs de pouvoir demander et recevoir facilement le paiement de leur gain par mobile money ;
-3-	Permettre aux affiliés de demander et recevoir également leur commission facilement par mobile money ;
-4-	Distribuer automatiquement les gains des vendeurs et les commissions des affiliés ;
-5-	Visualiser en temps réel les rapports des activités des vendeurs, affiliés et administrateurs ;
+<p>1-	Enregistrer les paiements de produits par mobile money ;</p>
+<p>2-	Permettre aux vendeurs de pouvoir demander et recevoir facilement le paiement de leur gain par mobile money ;</p>
+<p>3-	Permettre aux affiliés de demander et recevoir également leur commission facilement par mobile money ;</p>
+<p>4-	Distribuer automatiquement les gains des vendeurs et les commissions des affiliés ;</p>
+<p>5-	Visualiser en temps réel les rapports des activités des vendeurs, affiliés et administrateurs ;</p>
 
 # IMPORTANT
 Après instatallation et activation, rendez-vous dans le menu SAMM pour vérifier vos réglages.
